@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
 	validates :password, presence: true, length: { minimum: 6 }
 
+	# Digest mean a cryptographic hash function which is infeasible to invert/break
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
