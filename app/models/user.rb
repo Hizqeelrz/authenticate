@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
 	# Digest mean a cryptographic hash function which is infeasible to invert/break
 
+	# fixture password // search
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost

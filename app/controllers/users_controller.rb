@@ -12,7 +12,9 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
 
   	if @user.save
+      # Send Email
       log_in @user
+      UserMailer.signup_confirmation(@user).deliver_now
   		flash[:notice] = "Successfully Signed Up"
   		redirect_to @user # also can be redirect to the root_path
   	else
