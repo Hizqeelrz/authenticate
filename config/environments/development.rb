@@ -44,12 +44,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "example.com",
-    authentication: "plain",
+    domain: "gmail.com",
+    authentication: :login,
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"], # hardcorded username and password but result were same i.e (error)
+    user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
-    # openssl_verify_mode: 'none'
   }
 
   config.action_mailer.default_url_options = { host: "localhost: 3000" }
