@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   	if @user.save
       # Send Email
       log_in @user
-      UserMailer.signup_confirmation(@user).deliver_now
+      UserMailer.signup_confirmation(@user).deliver_later!(wait: 10.seconds)
   		flash[:notice] = "Successfully Signed Up"
   		redirect_to @user # also can be redirect to the root_path
   	else
