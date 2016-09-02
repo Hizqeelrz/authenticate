@@ -46,3 +46,6 @@ group :development do
 end
 
 gem 'bcrypt'
+
+gem 'resque'
+gem 'resque-scheduler'
