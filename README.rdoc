@@ -1,28 +1,12 @@
-== README
+Authenticate
+==============
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Email Sending Test Via ActiveJob Resque
 
-Things you may want to cover:
+To use Resque, you'll need to make sure you have [Redis](http://redis.io/topics/quickstart) installed. Once it's set up, make sure redis-server is running.
 
-* Ruby version
+    rake db:create
+    rake db:migrate
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+We can now start a worker with `QUEUE=* rake environment resque:work`. Run resque-web and visit http://0.0.0.0:5678/overview.
+If you see "0 of 1 Workers Working", all's well. Also boot up the scheduler in a separate process with `rake environment resque:scheduler`.
